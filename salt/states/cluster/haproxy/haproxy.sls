@@ -1,6 +1,7 @@
 haproxy-install:
   pkg.installed:
     - names:
+      - epel-release
       - haproxy
 
 haproxy-config:
@@ -9,7 +10,20 @@ haproxy-config:
     - source: salt://cluster/haproxy/files/haproxy-outside.cfg
     - user: root
     - group: root
+    - mode: 644
+
+set-haproxy-log:
+  file.managed:
+    - name: /usr/local/src/set_log.sh
+    - source: salt://cluster/haproxy/files/set_log.sh
+    - user: root
+    - group: root
     - mode: 755
+  cmd.run:
+    - name: cd /usr/local/src && sh set_log.sh && sleep 2 && touch set_log.sh.lock
+    - unless: test -e /usr/local/src/set_log.sh.lock
+    - require:
+      - file: set-haproxy-log
 
 haproxy-service:
   service.running:
@@ -17,11 +31,4 @@ haproxy-service:
     - enable: True
     - reload: True
     - require:
-      - pkg: haproxy-install
-      - file: haproxy-config
-    - watch:
-      - file: haproxy-config
-
-net.ipv4.ip_nonlocal_bind:
-  sysctl.present:
-    - value: 1
+      - file: set-haproxy-log
