@@ -1,4 +1,4 @@
 base:
   '*':
-    - cluster.haproxy.haproxy
-    - cluster.keepalived.keepalived
+    - haproxy.install
+    - keepalived.install

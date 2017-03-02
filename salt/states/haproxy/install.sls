@@ -7,7 +7,7 @@ haproxy-install:
 haproxy-config:
   file.managed:
     - name: /etc/haproxy/haproxy.cfg
-    - source: salt://cluster/haproxy/files/haproxy-outside.cfg
+    - source: salt://haproxy/files/haproxy.cfg
     - user: root
     - group: root
     - mode: 644
@@ -15,7 +15,7 @@ haproxy-config:
 set-haproxy-log:
   file.managed:
     - name: /usr/local/src/set_log.sh
-    - source: salt://cluster/haproxy/files/set_log.sh
+    - source: salt://haproxy/files/set_log.sh
     - user: root
     - group: root
     - mode: 755
