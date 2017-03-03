@@ -2,11 +2,11 @@
 
 check_mlb() {
 if [ $(ps -C haproxy --no-header | wc -l) -eq 0 ]; then
-        service haproxy restart
-fi
-sleep 2
-if [ $(ps -C haproxy --no-header | wc -l) -eq 0 ]; then
+    service haproxy restart
+    sleep 2
+    if [ $(ps -C haproxy --no-header | wc -l) -eq 0 ]; then
         systemctl stop keepalived
+    fi
 fi
 }
 
