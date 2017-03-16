@@ -13,8 +13,12 @@ keepalived_config:
     - template: jinja
     - defaults:  
       ROUTEID: {{ pillar['keepalived']['ROUTEID'] }}
+      INSTANCE_NAME: {{ pillar['keepalived']['INSTANCE_NAME'] }}
       STATEID: {{ pillar['keepalived']['STATEID'] }}
+      ROUTER_ID: {{ pillar['keepalived']['ROUTER_ID'] }}
       PRIORITYID: {{ pillar['keepalived']['PRIORITYID'] }}
+      AUTH_TYPE: {{ pillar['keepalived']['AUTH_TYPE'] }}
+      AUTH_PASS: {{ pillar['keepalived']['AUTH_PASS'] }}
       VIP: {{ pillar['keepalived']['VIP'] }}
 
 check_haproxy_script:
