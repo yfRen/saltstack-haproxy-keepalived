@@ -16,4 +16,5 @@ keepalived:
   AUTH_TYPE: PASS
   AUTH_PASS: 1111
   {% endif %}
+  NETWORK_CARD: eno16777736
   VIP: 192.168.200.20
