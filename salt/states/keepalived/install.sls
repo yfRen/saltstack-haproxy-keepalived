@@ -15,6 +15,7 @@ keepalived_config:
       ROUTEID: {{ pillar['keepalived']['ROUTEID'] }}
       INSTANCE_NAME: {{ pillar['keepalived']['INSTANCE_NAME'] }}
       STATEID: {{ pillar['keepalived']['STATEID'] }}
+      NETWORK_CARD: {{ pillar['keepalived']['NETWORK_CARD'] }}
       ROUTER_ID: {{ pillar['keepalived']['ROUTER_ID'] }}
       PRIORITYID: {{ pillar['keepalived']['PRIORITYID'] }}
       AUTH_TYPE: {{ pillar['keepalived']['AUTH_TYPE'] }}
